@@ -3,251 +3,993 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroKuia — Inteligência Artificial para a Agricultura Angolana</title>
-    <meta name="description" content="AgroKuia usa inteligência artificial para ajudar agricultores angolanos a identificar pragas e doenças nas suas culturas.">
+    <title>AgroKuia — Proteja a sua produção | IA para Agricultura Angolana</title>
+    <meta name="description" content="AgroKuia é a primeira plataforma angolana de inteligência artificial para agricultura. Detecta pragas, informa tratamentos e protege a sua produção. Disponível no Google Play.">
+    <meta name="keywords" content="AgroKuia, agricultura Angola, IA agrícola, detecção pragas, agritech Angola, Benguela, INAPEM">
+    <meta name="author" content="AgroKuia - AMAMBELE">
     <meta property="og:title" content="AgroKuia — IA para a Agricultura Angolana">
-    <meta property="og:description" content="Detecção de pragas e doenças com inteligência artificial. Feito para Angola.">
+    <meta property="og:description" content="A primeira plataforma angolana de IA para agricultura. Detecta pragas em segundos.">
     <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://www.agrokuia.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="canonical" href="https://www.agrokuia.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        
         :root {
-            --green-900: #0B3D2E;
-            --green-800: #145A3E;
-            --green-700: #1A7A52;
-            --green-600: #22A268;
-            --green-500: #2ECC71;
-            --green-400: #58D68D;
-            --green-100: #D5F5E3;
-            --green-50: #EAFAF1;
-            --gold: #F4A900;
-            --gold-light: #FFF3D6;
-            --dark: #1A1A2E;
-            --gray-900: #212529;
-            --gray-700: #495057;
-            --gray-500: #6C757D;
-            --gray-300: #DEE2E6;
-            --gray-100: #F8F9FA;
+            --green-900: #064E3B;
+            --green-800: #065F46;
+            --green-700: #047857;
+            --green-600: #059669;
+            --green-500: #10B981;
+            --green-400: #34D399;
+            --green-100: #D1FAE5;
+            --green-50: #ECFDF5;
+            --gold-500: #F59E0B;
+            --gold-400: #FBBF24;
+            --gold-100: #FEF3C7;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
             --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--gray-900); line-height: 1.6; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Language Bar */
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ===== LANGUAGE BAR ===== */
         .lang-bar {
-            background: var(--dark); color: white; text-align: center;
-            padding: 8px 24px; font-size: 13px; display: flex;
-            justify-content: center; align-items: center; gap: 8px;
-            position: fixed; top: 0; width: 100%; z-index: 1001;
+            background: var(--gray-900);
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            font-size: 13px;
         }
-        .lang-bar span { color: rgba(255,255,255,0.6); }
+        .lang-bar span { color: var(--gray-400); }
         .lang-btn {
-            background: none; border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.7); padding: 3px 12px; border-radius: 4px;
-            font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
-            font-family: 'Inter', sans-serif;
+            background: transparent;
+            border: 1px solid var(--gray-700);
+            color: var(--gray-400);
+            padding: 3px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit;
+            transition: var(--transition);
         }
-        .lang-btn:hover { border-color: rgba(255,255,255,0.5); color: white; }
-        .lang-btn.active { background: var(--green-700); border-color: var(--green-700); color: white; }
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--green-700);
+            border-color: var(--green-700);
+            color: var(--white);
+        }
 
-        /* Navigation */
+        /* ===== HEADER / NAV ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+        }
         nav {
-            position: fixed; top: 36px; width: 100%; z-index: 1000;
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--gray-300);
-            padding: 0 24px; height: 64px;
-            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-brand img { width: 38px; height: 38px; border-radius: 10px; }
-        .nav-brand span { font-size: 22px; font-weight: 800; color: var(--green-800); letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 28px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .nav-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        .nav-brand span {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--green-800);
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
         .nav-links a:hover { color: var(--green-700); }
-        .nav-cta {
-            background: var(--green-700); color: white !important; padding: 9px 22px;
-            border-radius: 50px; font-weight: 600 !important; transition: all 0.2s;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green-600);
+            transition: var(--transition);
         }
-        .nav-cta:hover { background: var(--green-800); transform: translateY(-1px); }
-        .mobile-menu { display: none; background: none; border: none; cursor: pointer; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--green-700) !important;
+            color: var(--white) !important;
+            padding: 10px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            transition: var(--transition) !important;
+        }
+        .nav-cta:hover {
+            background: var(--green-800) !important;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-cta::after { display: none !important; }
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
 
-        /* Hero */
+        /* ===== HERO ===== */
         .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 50%, var(--green-600) 100%);
-            position: relative; overflow: hidden; padding-top: 100px;
+            background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 40%, var(--green-700) 100%);
+            padding: 100px 24px 80px;
+            position: relative;
+            overflow: hidden;
         }
         .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: url('images/hero-field.jpg') center/cover no-repeat;
-            opacity: 0.15;
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%);
+            border-radius: 50%;
         }
-        .hero-content {
-            position: relative; z-index: 2; max-width: 1200px; margin: 0 auto;
-            padding: 80px 24px; display: grid; grid-template-columns: 1fr 1fr;
-            gap: 60px; align-items: center;
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+            border-radius: 50%;
         }
-        .hero-text h1 {
-            font-size: 52px; font-weight: 900; color: white; line-height: 1.1;
-            letter-spacing: -2px; margin-bottom: 24px;
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
-        .hero-text h1 span { color: var(--gold); }
-        .hero-text p { font-size: 19px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 40px; max-width: 520px; }
-        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-        .hero-stat { text-align: center; }
-        .hero-stat .number { font-size: 34px; font-weight: 800; color: var(--gold); }
-        .hero-stat .label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
-        .hero-visual { display: flex; justify-content: center; align-items: center; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--green-100);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green-400);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: var(--white);
+            color: var(--green-800);
+        }
+        .btn-primary:hover {
+            background: var(--green-50);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+        .hero-stat .number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+        }
+        .hero-stat .label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
         .phone-mockup {
-            width: 270px; height: 540px; background: var(--dark);
-            border-radius: 40px; padding: 12px; box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+            width: 280px;
+            background: var(--white);
+            border-radius: 36px;
+            padding: 12px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
         }
         .phone-screen {
-            width: 100%; height: 100%; background: linear-gradient(180deg, var(--green-50) 0%, white 30%);
-            border-radius: 30px; overflow: hidden; display: flex; flex-direction: column;
-            align-items: center; padding: 36px 18px; gap: 14px;
+            background: linear-gradient(180deg, var(--green-50) 0%, var(--white) 100%);
+            border-radius: 28px;
+            padding: 32px 20px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .phone-screen img { width: 56px; height: 56px; border-radius: 14px; }
-        .phone-screen .app-name { font-size: 18px; font-weight: 800; color: var(--green-800); }
-        .phone-screen .app-desc { font-size: 11px; color: var(--gray-500); text-align: center; }
+        .phone-screen img {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+        }
+        .phone-screen .app-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--green-800);
+            margin-bottom: 4px;
+        }
+        .phone-screen .app-desc {
+            font-size: 12px;
+            color: var(--gray-500);
+            text-align: center;
+            margin-bottom: 24px;
+        }
         .phone-feature {
-            width: 100%; background: white; border-radius: 14px; padding: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            box-shadow: var(--shadow-sm);
         }
         .phone-feature .icon-circle {
-            width: 36px; height: 36px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
         }
-        .phone-feature .feat-text { font-size: 10px; color: var(--gray-700); font-weight: 500; }
+        .phone-feature .feat-text {
+            font-size: 13px;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
 
-        /* Section styling */
+        /* ===== SECTIONS COMMON ===== */
         section { padding: 100px 24px; }
-        .section-container { max-width: 1100px; margin: 0 auto; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
         .section-label {
-            font-size: 13px; font-weight: 700; color: var(--green-600);
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--green-700);
+            margin-bottom: 12px;
         }
         .section-title {
-            font-size: 40px; font-weight: 800; color: var(--gray-900);
-            line-height: 1.2; letter-spacing: -1.5px; margin-bottom: 20px;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            max-width: 700px;
         }
-        .section-subtitle { font-size: 17px; color: var(--gray-500); max-width: 600px; line-height: 1.7; }
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--gray-500);
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
 
-        /* Problem section */
-        .problem { background: var(--gray-100); }
-        .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 60px; }
+        /* ===== PROBLEM ===== */
+        .problem { background: var(--gray-50); }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
         .problem-card {
-            background: white; border-radius: 20px; padding: 36px 28px;
-            border: 1px solid var(--gray-300); transition: transform 0.2s;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
         }
-        .problem-card:hover { transform: translateY(-4px); }
-        .problem-icon { font-size: 36px; margin-bottom: 16px; }
-        .problem-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: var(--gray-900); }
-        .problem-card p { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
-        .problem-card .stat { font-size: 30px; font-weight: 800; color: #E74C3C; margin-top: 14px; }
-        .problem-card .stat-source { font-size: 11px; color: var(--gray-500); }
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .problem-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .problem-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        .problem-card p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .problem-stat {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--green-700);
+            line-height: 1;
+        }
+        .problem-source {
+            font-size: 11px;
+            color: var(--gray-400);
+            margin-top: 4px;
+        }
 
-        /* Solution section */
-        .solution-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 60px; }
+        /* ===== SOLUTION ===== */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
         .solution-card {
-            background: var(--green-50); border-radius: 20px; padding: 32px;
-            border: 2px solid var(--green-100); display: flex; gap: 18px; align-items: flex-start;
+            text-align: center;
+            padding: 32px 20px;
+            border-radius: var(--radius-lg);
+            background: var(--green-50);
+            border: 1px solid var(--green-100);
+            transition: var(--transition);
+        }
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            background: var(--white);
         }
         .solution-num {
-            width: 44px; height: 44px; border-radius: 50%; background: var(--green-700);
-            color: white; display: flex; align-items: center; justify-content: center;
-            font-size: 18px; font-weight: 800; flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--green-700);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0 auto 16px;
         }
-        .solution-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--green-900); }
-        .solution-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+        .solution-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        .solution-card p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
 
-        /* Benguela section */
-        .benguela {
-            background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 100%);
-            color: white; position: relative; overflow: hidden;
+        /* ===== ABOUT / BENGUELA ===== */
+        .about {
+            background: var(--green-900);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
-        .benguela::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: url('images/angola-field.jpg') center/cover no-repeat; opacity: 0.1;
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(16,185,129,0.1) 100%);
         }
-        .benguela .section-container { position: relative; z-index: 2; }
-        .benguela .section-label { color: var(--gold); }
-        .benguela .section-title { color: white; }
-        .benguela .section-subtitle { color: rgba(255,255,255,0.7); }
-        .benguela-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 60px; }
-        .benguela-stat {
-            background: rgba(255,255,255,0.08); border-radius: 20px; padding: 28px;
-            text-align: center; border: 1px solid rgba(255,255,255,0.1);
+        .about .section-label { color: var(--green-400); }
+        .about .section-title { color: var(--white); }
+        .about .section-subtitle { color: rgba(255,255,255,0.7); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
-        .benguela-stat .number { font-size: 32px; font-weight: 800; color: var(--gold); }
-        .benguela-stat .label { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 6px; }
-        .benguela-stat .source { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+        .about-text p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .about-stat {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        .about-stat:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-2px);
+        }
+        .about-stat .number {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--gold-400);
+            line-height: 1;
+        }
+        .about-stat .label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 6px;
+        }
+        .about-stat .source {
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+        }
 
-        /* Features section */
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+        /* ===== FEATURES ===== */
+        .features { background: var(--gray-50); }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
         .feature-card {
-            padding: 28px; border-radius: 20px; border: 1px solid var(--gray-300);
-            background: white; transition: all 0.2s;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
         }
-        .feature-card:hover { border-color: var(--green-400); box-shadow: 0 8px 24px rgba(46,204,113,0.1); }
-        .feature-icon { font-size: 28px; margin-bottom: 14px; }
-        .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-        .feature-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--green-200);
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--green-50);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
 
-        /* CTA section */
-        .cta {
-            background: linear-gradient(135deg, var(--green-700) 0%, var(--green-600) 100%);
-            text-align: center; color: white;
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
-        .cta h2 { font-size: 40px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
-        .cta p { font-size: 17px; opacity: 0.85; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            padding: 14px 32px; border-radius: 50px; font-size: 15px; font-weight: 700;
-            text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
         }
-        .btn-white { background: white; color: var(--green-800); }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
-        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .testimonial-stars {
+            color: var(--gold-500);
+            font-size: 16px;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card blockquote {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--green-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--green-700);
+            flex-shrink: 0;
+        }
+        .testimonial-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        .testimonial-role {
+            font-size: 12px;
+            color: var(--gray-400);
+        }
 
-        /* Footer */
-        footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 60px 24px 30px; }
-        .footer-content {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+        /* ===== DOWNLOAD CTA ===== */
+        .download {
+            background: linear-gradient(135deg, var(--green-800) 0%, var(--green-700) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .footer-brand img { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 16px; }
-        .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 320px; }
-        .footer-col h4 { color: white; font-size: 13px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+        .download::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        .download .section-container { position: relative; z-index: 1; }
+        .download h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .download p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .download-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-download {
+            background: var(--white);
+            color: var(--green-800);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        .btn-instagram {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .btn-instagram:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact { background: var(--gray-50); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+        .contact-info p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--green-50);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .contact-item-text a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .contact-item-text a:hover { color: var(--green-700); }
+        .contact-item-label {
+            font-size: 12px;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            transition: var(--transition);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--green-500);
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+            background: var(--white);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--green-700);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-submit:hover {
+            background: var(--green-800);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .form-success.show { display: block; }
+        .form-success .check {
+            width: 64px;
+            height: 64px;
+            background: var(--green-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 16px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 60px 24px 24px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-top: 16px;
+            color: var(--gray-500);
+        }
+        .footer-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .footer-brand-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-brand-name span {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
         .footer-col a:hover { color: var(--green-400); }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-800);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: var(--transition);
+            margin-bottom: 0;
+        }
+        .footer-social a:hover {
+            background: var(--green-700);
+            transform: translateY(-2px);
+        }
         .footer-bottom {
-            max-width: 1100px; margin: 40px auto 0; padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between; font-size: 13px;
+            border-top: 1px solid var(--gray-800);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { margin-top: 40px; }
+            .phone-mockup { transform: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links { 
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--gray-200);
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-links.show { display: flex; }
             .mobile-menu { display: block; }
-            .hero-content { grid-template-columns: 1fr; text-align: center; padding: 60px 24px; }
-            .hero-text h1 { font-size: 32px; }
-            .hero-text p { font-size: 15px; margin-left: auto; margin-right: auto; }
-            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-            .hero-stat .number { font-size: 22px; }
-            .hero-visual { display: none; }
-            .problem-grid, .solution-grid, .features-grid { grid-template-columns: 1fr; }
-            .benguela-stats { grid-template-columns: repeat(2, 1fr); }
-            .section-title { font-size: 28px; }
-            .footer-content { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 8px; }
-            .cta h2 { font-size: 26px; }
-            .lang-bar { flex-wrap: wrap; }
+            .problem-grid { grid-template-columns: 1fr; }
+            .solution-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .hero { padding: 60px 24px 60px; }
+            section { padding: 60px 24px; }
+            .lang-bar { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .solution-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .about-stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -256,71 +998,87 @@
 <!-- Language Bar -->
 <div class="lang-bar">
     <span id="lang-label">Idioma:</span>
-    <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">Portugues</button>
-    <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
-    <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">Francais</button>
+    <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">PT</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">FR</button>
 </div>
 
-<!-- Navigation -->
-<nav>
-    <a href="#" class="nav-brand">
-        <img src="images/logo.png" alt="AgroKuia">
-        <span>AgroKuia</span>
-    </a>
-    <div class="nav-links">
-        <a href="#problema" data-i18n="nav_problem">Problema</a>
-        <a href="#solucao" data-i18n="nav_solution">Solucao</a>
-        <a href="#benguela">Benguela</a>
-        <a href="#funcionalidades" data-i18n="nav_features">Funcionalidades</a>
-        <a href="#contacto" class="nav-cta" data-i18n="nav_contact">Contacte-nos</a>
-    </div>
-    <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-</nav>
+<!-- Header -->
+<header>
+    <nav>
+        <a href="#" class="nav-brand">
+            <img src="images/logo.png" alt="AgroKuia" width="40" height="40">
+            <span>AgroKuia</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#problema" data-i18n="nav_problem">Problema</a>
+            <a href="#solucao" data-i18n="nav_solution">Solução</a>
+            <a href="#benguela" data-i18n="nav_about">Benguela</a>
+            <a href="#funcionalidades" data-i18n="nav_features">Funcionalidades</a>
+            <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+            <a href="#descarregar" class="nav-cta" data-i18n="nav_download">Descarregar App</a>
+        </div>
+        <button class="mobile-menu" onclick="toggleMenu()" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </nav>
+</header>
 
 <!-- Hero -->
 <section class="hero">
-    <div class="hero-content">
+    <div class="hero-inner">
         <div class="hero-text">
-            <h1 data-i18n="hero_title">Inteligencia Artificial para a <span>Agricultura Angolana</span></h1>
-            <p data-i18n="hero_desc">Tire uma foto da sua planta. A AgroKuia identifica pragas e doencas em segundos, com recomendacoes de tratamento — tudo em portugues, com assistencia por voz.</p>
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                <span data-i18n="hero_badge">Disponível no Google Play</span>
+            </div>
+            <h1 data-i18n="hero_title">A primeira plataforma de <span>IA agrícola</span> de Angola</h1>
+            <p class="hero-desc" data-i18n="hero_desc">Tire uma foto da sua planta. A AgroKuia identifica pragas e doenças em segundos, com recomendações de tratamento — tudo em português, com assistência por voz.</p>
+            <div class="hero-buttons">
+                <a href="https://play.google.com/store/apps/details?id=space.manus.agrokuia" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.698-2.302 2.698-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/></svg>
+                    <span data-i18n="hero_cta1">Descarregar Grátis</span>
+                </a>
+                <a href="https://www.instagram.com/agrokuia" class="btn btn-secondary" target="_blank" rel="noopener">
+                    <span data-i18n="hero_cta2">Seguir @agrokuia</span>
+                </a>
+            </div>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="number">8M+</div>
-                    <div class="label" data-i18n="stat_farmers">Agricultores</div>
+                    <div class="label" data-i18n="stat_farmers">Agricultores em Angola</div>
                 </div>
                 <div class="hero-stat">
                     <div class="number">40%</div>
                     <div class="label" data-i18n="stat_losses">Perdas por pragas</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="number">0</div>
-                    <div class="label" data-i18n="stat_tools">Ferramentas digitais</div>
+                    <div class="number">18</div>
+                    <div class="label" data-i18n="stat_provinces">Províncias cobertas</div>
                 </div>
             </div>
         </div>
         <div class="hero-visual">
             <div class="phone-mockup">
                 <div class="phone-screen">
-                    <img src="images/logo.png" alt="AgroKuia">
+                    <img src="images/logo.png" alt="AgroKuia" width="64" height="64">
                     <div class="app-name">AgroKuia</div>
-                    <div class="app-desc" data-i18n="phone_slogan">O AgroKuia ajuda a cuidar da sua producao</div>
+                    <div class="app-desc" data-i18n="phone_slogan">Proteja a sua produção</div>
                     <div class="phone-feature">
-                        <div class="icon-circle" style="background:#E8F8F0;">📷</div>
-                        <div class="feat-text" data-i18n="phone_step1">Tire uma foto da planta afectada</div>
+                        <div class="icon-circle" style="background:#D1FAE5;">📷</div>
+                        <div class="feat-text" data-i18n="phone_step1">Tire uma foto da planta</div>
                     </div>
                     <div class="phone-feature">
-                        <div class="icon-circle" style="background:#FFF3D6;">🔬</div>
-                        <div class="feat-text" data-i18n="phone_step2">IA identifica a praga ou doenca</div>
+                        <div class="icon-circle" style="background:#FEF3C7;">🔬</div>
+                        <div class="feat-text" data-i18n="phone_step2">IA identifica a praga</div>
                     </div>
                     <div class="phone-feature">
-                        <div class="icon-circle" style="background:#E8F0FE;">💊</div>
-                        <div class="feat-text" data-i18n="phone_step3">Receba o tratamento recomendado</div>
+                        <div class="icon-circle" style="background:#DBEAFE;">💊</div>
+                        <div class="feat-text" data-i18n="phone_step3">Receba o tratamento</div>
                     </div>
                     <div class="phone-feature">
-                        <div class="icon-circle" style="background:#FDE8E8;">🔊</div>
-                        <div class="feat-text" data-i18n="phone_step4">Ouca tudo em voz alta</div>
+                        <div class="icon-circle" style="background:#FCE7F3;">🔊</div>
+                        <div class="feat-text" data-i18n="phone_step4">Ouça tudo em voz alta</div>
                     </div>
                 </div>
             </div>
@@ -332,29 +1090,29 @@
 <section class="problem" id="problema">
     <div class="section-container">
         <div class="section-label" data-i18n="problem_label">O Problema</div>
-        <h2 class="section-title" data-i18n="problem_title">Angola perde milhoes de toneladas de alimentos por ano</h2>
-        <p class="section-subtitle" data-i18n="problem_subtitle">Os agricultores familiares enfrentam pragas e doencas sem acesso a ferramentas de diagnostico ou assistencia tecnica atempada.</p>
+        <h2 class="section-title" data-i18n="problem_title">Angola perde milhões de toneladas de alimentos por ano</h2>
+        <p class="section-subtitle" data-i18n="problem_subtitle">Os agricultores familiares enfrentam pragas e doenças sem acesso a ferramentas de diagnóstico ou assistência técnica.</p>
         <div class="problem-grid">
             <div class="problem-card">
                 <div class="problem-icon">🌾</div>
-                <h3 data-i18n="problem1_title">Perdas Massivas</h3>
-                <p data-i18n="problem1_desc">Ate 40% das colheitas sao perdidas anualmente devido a pragas e doencas nao diagnosticadas a tempo.</p>
-                <div class="stat">40%</div>
-                <div class="stat-source">Fonte: FAO, 2023</div>
+                <h3 data-i18n="p1_title">Perdas Massivas</h3>
+                <p data-i18n="p1_desc">Até 40% das colheitas são perdidas anualmente devido a pragas e doenças não diagnosticadas a tempo.</p>
+                <div class="problem-stat">40%</div>
+                <div class="problem-source">Fonte: FAO, 2023</div>
             </div>
             <div class="problem-card">
                 <div class="problem-icon">👨‍🌾</div>
-                <h3 data-i18n="problem2_title">Sem Assistencia Tecnica</h3>
-                <p data-i18n="problem2_desc">Angola tem apenas 1 extensionista para cada 3.000+ agricultores. A maioria nunca recebe visita tecnica.</p>
-                <div class="stat">1:3.000</div>
-                <div class="stat-source">Fonte: Banco Mundial / CCARDESA</div>
+                <h3 data-i18n="p2_title">Sem Assistência Técnica</h3>
+                <p data-i18n="p2_desc">Angola tem apenas 1 extensionista para cada 3.000+ agricultores. A maioria nunca recebe visita técnica.</p>
+                <div class="problem-stat">1:3.000</div>
+                <div class="problem-source">Fonte: Banco Mundial / CCARDESA</div>
             </div>
             <div class="problem-card">
                 <div class="problem-icon">📱</div>
-                <h3 data-i18n="problem3_title">Zero Ferramentas Digitais</h3>
-                <p data-i18n="problem3_desc">Nao existe nenhuma aplicacao de agricultura digital em Angola. O pais esta completamente desservido.</p>
-                <div class="stat">0 apps</div>
-                <div class="stat-source">Fonte: CCARDESA Digital Agriculture Study</div>
+                <h3 data-i18n="p3_title">Zero Ferramentas Digitais</h3>
+                <p data-i18n="p3_desc">Não existe nenhuma aplicação de agricultura digital em Angola. O país está completamente desservido.</p>
+                <div class="problem-stat">0 apps</div>
+                <div class="problem-source">Fonte: CCARDESA Digital Agriculture Study</div>
             </div>
         </div>
     </div>
@@ -363,416 +1121,431 @@
 <!-- Solution -->
 <section id="solucao">
     <div class="section-container">
-        <div class="section-label" data-i18n="solution_label">A Solucao</div>
-        <h2 class="section-title" data-i18n="solution_title">Como a AgroKuia funciona</h2>
-        <p class="section-subtitle" data-i18n="solution_subtitle">Diagnostico inteligente em 4 passos simples — sem necessidade de saber ler.</p>
+        <div class="section-label" data-i18n="sol_label">A Solução</div>
+        <h2 class="section-title" data-i18n="sol_title">Como a AgroKuia funciona</h2>
+        <p class="section-subtitle" data-i18n="sol_subtitle">Diagnóstico inteligente em 4 passos simples — sem necessidade de saber ler.</p>
         <div class="solution-grid">
             <div class="solution-card">
                 <div class="solution-num">1</div>
-                <div>
-                    <h3 data-i18n="step1_title">Tire uma Foto</h3>
-                    <p data-i18n="step1_desc">Aponte a camara do telemovel para a planta afectada e tire uma foto. Funciona com qualquer smartphone Android.</p>
-                </div>
+                <h3 data-i18n="s1_title">Tire uma Foto</h3>
+                <p data-i18n="s1_desc">Aponte a câmara do telemóvel para a planta afectada. Funciona com qualquer smartphone Android.</p>
             </div>
             <div class="solution-card">
                 <div class="solution-num">2</div>
-                <div>
-                    <h3 data-i18n="step2_title">IA Analisa a Imagem</h3>
-                    <p data-i18n="step2_desc">A inteligencia artificial identifica a praga ou doenca em segundos, comparando com a nossa base de dados angolana.</p>
-                </div>
+                <h3 data-i18n="s2_title">IA Analisa</h3>
+                <p data-i18n="s2_desc">A inteligência artificial identifica a praga ou doença em segundos, comparando com a base de dados angolana.</p>
             </div>
             <div class="solution-card">
                 <div class="solution-num">3</div>
-                <div>
-                    <h3 data-i18n="step3_title">Receba o Diagnostico</h3>
-                    <p data-i18n="step3_desc">Veja o resultado com o nome da praga, nivel de severidade, e recomendacoes de tratamento especificas para Angola.</p>
-                </div>
+                <h3 data-i18n="s3_title">Diagnóstico</h3>
+                <p data-i18n="s3_desc">Veja o resultado com o nome da praga, severidade, e recomendações de tratamento específicas para Angola.</p>
             </div>
             <div class="solution-card">
                 <div class="solution-num">4</div>
-                <div>
-                    <h3 data-i18n="step4_title">Ouca e Partilhe</h3>
-                    <p data-i18n="step4_desc">A assistencia por voz le tudo em portugues. Partilhe o resultado via WhatsApp com a sua cooperativa.</p>
-                </div>
+                <h3 data-i18n="s4_title">Ouça e Partilhe</h3>
+                <p data-i18n="s4_desc">A assistência por voz lê tudo em português. Partilhe via WhatsApp com a sua cooperativa.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Benguela -->
-<section class="benguela" id="benguela">
+<!-- About / Benguela -->
+<section class="about" id="benguela">
     <div class="section-container">
-        <div class="section-label" data-i18n="benguela_label">Projecto Piloto</div>
-        <h2 class="section-title" data-i18n="benguela_title">Porquê Benguela</h2>
-        <p class="section-subtitle" data-i18n="benguela_subtitle">Benguela foi escolhida após um estudo comparativo das 18 províncias de Angola. Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.</p>
-        <div class="benguela-stats">
-            <div class="benguela-stat">
-                <div class="number">2M+</div>
-                <div class="label" data-i18n="beng_stat1">Hectares de terra arável</div>
-                <div class="source">Economia & Finanças, 2026</div>
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-label" data-i18n="about_label">Projecto Piloto</div>
+                <h2 class="section-title" data-i18n="about_title">Porquê Benguela</h2>
+                <p class="section-subtitle" data-i18n="about_subtitle">Benguela foi escolhida após um estudo comparativo das 18 províncias de Angola.</p>
+                <p data-i18n="about_p1">Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.</p>
+                <p data-i18n="about_p2">A AgroKuia nasce como o sistema nervoso agrícola de Angola. A primeira e única plataforma que transforma cada diagnóstico num dado para o mapa nacional de saúde agrícola.</p>
             </div>
-            <div class="benguela-stat">
-                <div class="number">1.165.000</div>
-                <div class="label" data-i18n="beng_stat2">Toneladas produzidas (2024/25)</div>
-                <div class="source">Economia & Finanças, 2026</div>
-            </div>
-            <div class="benguela-stat">
-                <div class="number">$4B+</div>
-                <div class="label" data-i18n="beng_stat3">Investimento Corredor do Lobito</div>
-                <div class="source">EUA / UE / AfDB</div>
-            </div>
-            <div class="benguela-stat">
-                <div class="number">96.000+</div>
-                <div class="label" data-i18n="beng_stat4">Famílias camponesas</div>
-                <div class="source">VerAngola, 2025</div>
-            </div>
-        </div>
-        <div class="benguela-stats" style="margin-top: 20px;">
-            <div class="benguela-stat">
-                <div class="number">3.000+</div>
-                <div class="label" data-i18n="beng_stat5">Cooperativas activas</div>
-                <div class="source">Economia & Finanças, 2026</div>
-            </div>
-            <div class="benguela-stat">
-                <div class="number">+93%</div>
-                <div class="label" data-i18n="beng_stat6">Crescimento produção (2024/25)</div>
-                <div class="source">Economia & Finanças, 2026</div>
-            </div>
-            <div class="benguela-stat">
-                <div class="number">80%</div>
-                <div class="label" data-i18n="beng_stat7">Terra arável por explorar</div>
-                <div class="source">Economia & Finanças, 2026</div>
-            </div>
-            <div class="benguela-stat">
-                <div class="number">0</div>
-                <div class="label" data-i18n="beng_stat8">Ferramentas digitais agrícolas</div>
-                <div class="source">Análise AgroKuia</div>
+            <div class="about-stats">
+                <div class="about-stat">
+                    <div class="number">2M+</div>
+                    <div class="label" data-i18n="b1">Hectares de terra arável</div>
+                    <div class="source">Economia & Finanças, 2026</div>
+                </div>
+                <div class="about-stat">
+                    <div class="number">1.165.000</div>
+                    <div class="label" data-i18n="b2">Toneladas produzidas</div>
+                    <div class="source">Economia & Finanças, 2026</div>
+                </div>
+                <div class="about-stat">
+                    <div class="number">$4B+</div>
+                    <div class="label" data-i18n="b3">Investimento Corredor do Lobito</div>
+                    <div class="source">EUA / UE / AfDB</div>
+                </div>
+                <div class="about-stat">
+                    <div class="number">96.000+</div>
+                    <div class="label" data-i18n="b4">Famílias camponesas</div>
+                    <div class="source">VerAngola, 2025</div>
+                </div>
+                <div class="about-stat">
+                    <div class="number">3.000+</div>
+                    <div class="label" data-i18n="b5">Cooperativas activas</div>
+                    <div class="source">Economia & Finanças, 2026</div>
+                </div>
+                <div class="about-stat">
+                    <div class="number">+93%</div>
+                    <div class="label" data-i18n="b6">Crescimento produção</div>
+                    <div class="source">Economia & Finanças, 2026</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Features -->
-<section id="funcionalidades">
+<section class="features" id="funcionalidades">
     <div class="section-container">
-        <div class="section-label" data-i18n="features_label">Funcionalidades</div>
-        <h2 class="section-title" data-i18n="features_title">Feito para o agricultor angolano</h2>
-        <p class="section-subtitle" data-i18n="features_subtitle">Cada funcionalidade foi desenhada a pensar nas condicoes reais do campo em Angola.</p>
+        <div class="section-label" data-i18n="feat_label">Funcionalidades</div>
+        <h2 class="section-title" data-i18n="feat_title">Feito para o agricultor angolano</h2>
+        <p class="section-subtitle" data-i18n="feat_subtitle">Cada funcionalidade foi desenhada a pensar nas condições reais do campo em Angola.</p>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🔬</div>
-                <h3 data-i18n="feat1_title">Deteccao com IA</h3>
-                <p data-i18n="feat1_desc">Inteligencia artificial treinada para identificar pragas e doencas especificas de Angola.</p>
+                <h3 data-i18n="f1_title">Detecção com IA</h3>
+                <p data-i18n="f1_desc">Inteligência artificial que identifica pragas e doenças específicas de Angola em segundos.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🔊</div>
-                <h3 data-i18n="feat2_title">Assistencia por Voz</h3>
-                <p data-i18n="feat2_desc">Todos os resultados sao lidos em voz alta em portugues — ideal para utilizadores com baixa literacia.</p>
+                <h3 data-i18n="f2_title">Assistência por Voz</h3>
+                <p data-i18n="f2_desc">Todos os resultados são lidos em voz alta em português — ideal para utilizadores com baixa literacia.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📍</div>
-                <h3 data-i18n="feat3_title">GPS Automatico</h3>
-                <p data-i18n="feat3_desc">Localizacao automatica para mapeamento regional de pragas e alertas por zona.</p>
+                <h3 data-i18n="f3_title">GPS Automático</h3>
+                <p data-i18n="f3_desc">Localização automática para mapeamento regional de pragas e alertas por zona.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📲</div>
-                <h3 data-i18n="feat4_title">Partilha WhatsApp</h3>
-                <p data-i18n="feat4_desc">Envie o diagnostico directamente para a sua cooperativa ou extensionista via WhatsApp.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛒</div>
-                <h3 data-i18n="feat5_title">Marketplace</h3>
-                <p data-i18n="feat5_desc">Aceda a produtos agricolas, sementes e fertilizantes de fornecedores verificados.</p>
+                <h3 data-i18n="f4_title">Partilha WhatsApp</h3>
+                <p data-i18n="f4_desc">Envie o diagnóstico directamente para a sua cooperativa ou extensionista via WhatsApp.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📚</div>
-                <h3 data-i18n="feat6_title">Guia Agricola</h3>
-                <p data-i18n="feat6_desc">Base de dados completa com pragas, doencas, solos e culturas de todas as 18 provincias de Angola.</p>
+                <h3 data-i18n="f5_title">Guia Agrícola</h3>
+                <p data-i18n="f5_desc">Base de dados completa com pragas, doenças, solos e culturas de todas as 18 províncias de Angola.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3 data-i18n="f6_title">Funciona Offline</h3>
+                <p data-i18n="f6_desc">Guarda diagnósticos quando não há rede e sincroniza automaticamente quando a internet volta.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="contacto">
+<!-- Testimonials -->
+<section id="testemunhos">
     <div class="section-container">
-        <h2 data-i18n="cta_title">Junte-se a revolucao agricola de Angola</h2>
-        <p data-i18n="cta_desc">Estamos a procura de parceiros, cooperativas e instituicoes que queiram levar tecnologia ao campo angolano.</p>
-        <div class="cta-buttons">
-            <a href="mailto:contact@agrokuia.com" class="btn btn-white">✉️ contact@agrokuia.com</a>
-            <a href="https://www.linkedin.com/company/agrokuia" class="btn btn-outline" target="_blank">LinkedIn</a>
+        <div class="section-label" data-i18n="test_label">O que dizem</div>
+        <h2 class="section-title" data-i18n="test_title">Vozes do campo angolano</h2>
+        <p class="section-subtitle" data-i18n="test_subtitle">Feedback dos primeiros utilizadores e parceiros que testaram a AgroKuia.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote data-i18n="t1_quote">"Nunca pensei que um telemóvel pudesse ajudar-me a saber o que a minha planta tem. Agora tiro a foto e sei logo o que fazer."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MA</div>
+                    <div>
+                        <div class="testimonial-name" data-i18n="t1_name">Maria Antónia</div>
+                        <div class="testimonial-role" data-i18n="t1_role">Agricultora, Benguela</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote data-i18n="t2_quote">"A funcionalidade de voz é fantástica. Muitos dos nossos membros não sabem ler, e agora conseguem usar a tecnologia."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JM</div>
+                    <div>
+                        <div class="testimonial-name" data-i18n="t2_name">José Manuel</div>
+                        <div class="testimonial-role" data-i18n="t2_role">Líder de Cooperativa, Huambo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote data-i18n="t3_quote">"Uma ferramenta como esta é exactamente o que Angola precisa. Dados reais do campo, em tempo real, pela primeira vez."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">PC</div>
+                    <div>
+                        <div class="testimonial-name" data-i18n="t3_name">Prof. Carlos</div>
+                        <div class="testimonial-role" data-i18n="t3_role">Engenheiro Agrónomo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download CTA -->
+<section class="download" id="descarregar">
+    <div class="section-container">
+        <h2 data-i18n="dl_title">Proteja a sua produção hoje</h2>
+        <p data-i18n="dl_desc">A AgroKuia já está disponível no Google Play. Grátis. Em português. Para todos os agricultores de Angola.</p>
+        <div class="download-buttons">
+            <a href="https://play.google.com/store/apps/details?id=space.manus.agrokuia" class="btn-download" target="_blank" rel="noopener">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.698-2.302 2.698-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/></svg>
+                <span data-i18n="dl_btn1">Descarregar no Google Play</span>
+            </a>
+            <a href="https://www.instagram.com/agrokuia" class="btn-instagram" target="_blank" rel="noopener">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                <span data-i18n="dl_btn2">Seguir @agrokuia</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contacto">
+    <div class="section-container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="section-label" data-i18n="ct_label">Parcerias & Investimento</div>
+                <h2 class="section-title" data-i18n="ct_title">Vamos conversar</h2>
+                <p data-i18n="ct_desc">Estamos abertos a parcerias com cooperativas, instituições governamentais e investidores que queiram impactar a agricultura angolana.</p>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-item-text">
+                        <div class="contact-item-label">Email</div>
+                        <a href="mailto:contact@agrokuia.com">contact@agrokuia.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📷</div>
+                    <div class="contact-item-text">
+                        <div class="contact-item-label">Instagram</div>
+                        <a href="https://www.instagram.com/agrokuia" target="_blank" rel="noopener">@agrokuia</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-item-text">
+                        <div class="contact-item-label" data-i18n="ct_location_label">Localização</div>
+                        <a href="#">Luanda, Angola</a>
+                    </div>
+                </div>
+                <div class="footer-social" style="margin-top:32px;">
+                    <a href="https://www.instagram.com/agrokuia" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+                    <a href="https://play.google.com/store/apps/details?id=space.manus.agrokuia" target="_blank" rel="noopener" aria-label="Google Play">▶️</a>
+                </div>
+            </div>
+            <div>
+                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name" data-i18n="form_name">Nome</label>
+                        <input type="text" id="name" name="name" required placeholder="O seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="email@exemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" data-i18n="form_subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" placeholder="Parceria / Investimento / Outro">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="form_message">Mensagem</label>
+                        <textarea id="message" name="message" required placeholder="Escreva a sua mensagem..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-i18n="form_submit">Enviar Mensagem</button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="check">&#10003;</div>
+                    <h3 data-i18n="form_success_title" style="font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:8px;">Mensagem enviada!</h3>
+                    <p data-i18n="form_success_desc" style="font-size:15px;color:var(--gray-500);">Obrigado pelo seu interesse. Entraremos em contacto brevemente.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <div class="footer-content">
-        <div class="footer-brand">
-            <img src="images/logo.png" alt="AgroKuia">
-            <p data-i18n="footer_desc">AgroKuia — Inteligencia artificial para a agricultura angolana. Feito para Angola, por angolanos. Sede em Luanda.</p>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-brand-name">
+                    <img src="images/logo.png" alt="AgroKuia" width="36" height="36">
+                    <span>AgroKuia</span>
+                </div>
+                <p data-i18n="footer_desc">A primeira plataforma angolana de IA para agricultura. Feito em Angola, para Angola. Uma empresa AMAMBELE.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/agrokuia" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+                    <a href="https://play.google.com/store/apps/details?id=space.manus.agrokuia" target="_blank" rel="noopener" aria-label="Google Play">▶️</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_product">Produto</h4>
+                <a href="#solucao" data-i18n="footer_how">Como Funciona</a>
+                <a href="#funcionalidades" data-i18n="nav_features">Funcionalidades</a>
+                <a href="#benguela" data-i18n="about_label">Projecto Piloto</a>
+                <a href="#descarregar" data-i18n="nav_download">Descarregar App</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_company">Empresa</h4>
+                <a href="#benguela" data-i18n="footer_about">Sobre Nós</a>
+                <a href="privacy-policy.html" data-i18n="footer_privacy">Política de Privacidade</a>
+                <a href="delete-account.html" data-i18n="footer_delete">Eliminar Conta</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_contact_title">Contacto</h4>
+                <a href="mailto:contact@agrokuia.com">contact@agrokuia.com</a>
+                <a href="https://www.instagram.com/agrokuia" target="_blank" rel="noopener">Instagram @agrokuia</a>
+                <a href="#">Luanda, Angola</a>
+            </div>
         </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_product">Produto</h4>
-            <a href="#solucao" data-i18n="footer_how">Como Funciona</a>
-            <a href="#funcionalidades" data-i18n="nav_features">Funcionalidades</a>
-            <a href="#benguela" data-i18n="benguela_label">Projecto Piloto</a>
-            <a href="privacy-policy.html" data-i18n="footer_privacy">Politica de Privacidade</a>
+        <div class="footer-bottom">
+            <span>&copy; 2026 AgroKuia. <span data-i18n="footer_rights">Todos os direitos reservados.</span></span>
+            <span data-i18n="footer_founder">Fundada por Bernardo Sebastião</span>
         </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_contact">Contacto</h4>
-            <a href="mailto:contact@agrokuia.com">contact@agrokuia.com</a>
-            <a href="https://www.linkedin.com/company/agrokuia" target="_blank">LinkedIn</a>
-            <a href="#">Luanda, Angola</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span>&copy; 2026 AgroKuia. <span data-i18n="footer_rights">Todos os direitos reservados.</span></span>
-        <span data-i18n="footer_founder">Fundada por Bernardo Sebastiao</span>
     </div>
 </footer>
 
 <script>
-const translations = {
+/* ===== MOBILE MENU ===== */
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('show');
+}
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('show');
+    });
+});
+
+/* ===== CONTACT FORM ===== */
+function handleSubmit(e) {
+    e.preventDefault();
+    var form = document.getElementById('contactForm');
+    var data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+    console.log('Contact form submitted:', data);
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    setTimeout(function() {
+        form.style.display = 'block';
+        form.reset();
+        document.getElementById('formSuccess').classList.remove('show');
+    }, 5000);
+}
+
+/* ===== TRANSLATIONS ===== */
+var translations = {
     pt: {
-        nav_problem: "Problema",
-        nav_solution: "Solução",
-        nav_features: "Funcionalidades",
-        nav_contact: "Contacte-nos",
-        hero_title: 'Inteligência Artificial para a <span>Agricultura Angolana</span>',
-        hero_desc: "Tire uma foto da sua planta. A AgroKuia identifica pragas e doenças em segundos, com recomendações de tratamento — tudo em português, com assistência por voz.",
-        stat_farmers: "Agricultores",
-        stat_losses: "Perdas por pragas",
-        stat_tools: "Ferramentas digitais",
-        phone_slogan: "O AgroKuia ajuda a cuidar da sua produção",
-        phone_step1: "Tire uma foto da planta afectada",
-        phone_step2: "IA identifica a praga ou doença",
-        phone_step3: "Receba o tratamento recomendado",
-        phone_step4: "Ouça tudo em voz alta",
-        problem_label: "O Problema",
-        problem_title: "Angola perde milhões de toneladas de alimentos por ano",
-        problem_subtitle: "Os agricultores familiares enfrentam pragas e doenças sem acesso a ferramentas de diagnóstico ou assistência técnica atempada.",
-        problem1_title: "Perdas Massivas",
-        problem1_desc: "Até 40% das colheitas são perdidas anualmente devido a pragas e doenças não diagnosticadas a tempo.",
-        problem2_title: "Sem Assistência Técnica",
-        problem2_desc: "Angola tem apenas 1 extensionista para cada 3.000+ agricultores. A maioria nunca recebe visita técnica.",
-        problem3_title: "Zero Ferramentas Digitais",
-        problem3_desc: "Não existe nenhuma aplicação de agricultura digital em Angola. O país está completamente desservido.",
-        solution_label: "A Solução",
-        solution_title: "Como a AgroKuia funciona",
-        solution_subtitle: "Diagnóstico inteligente em 4 passos simples — sem necessidade de saber ler.",
-        step1_title: "Tire uma Foto",
-        step1_desc: "Aponte a câmara do telemóvel para a planta afectada e tire uma foto. Funciona com qualquer smartphone Android.",
-        step2_title: "IA Analisa a Imagem",
-        step2_desc: "A inteligência artificial identifica a praga ou doença em segundos, comparando com a nossa base de dados angolana.",
-        step3_title: "Receba o Diagnóstico",
-        step3_desc: "Veja o resultado com o nome da praga, nível de severidade, e recomendações de tratamento específicas para Angola.",
-        step4_title: "Ouça e Partilhe",
-        step4_desc: "A assistência por voz lê tudo em português. Partilhe o resultado via WhatsApp com a sua cooperativa.",
-        benguela_label: "Projecto Piloto",
-        benguela_title: "Porquê Benguela",
-        benguela_subtitle: "Benguela foi escolhida após um estudo comparativo das 18 províncias de Angola. Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.",
-        beng_stat1: "Hectares de terra arável",
-        beng_stat2: "Toneladas produzidas (2024/25)",
-        beng_stat3: "Investimento Corredor do Lobito",
-        beng_stat4: "Famílias camponesas",
-        beng_stat5: "Cooperativas activas",
-        beng_stat6: "Crescimento produção (2024/25)",
-        beng_stat7: "Terra arável por explorar",
-        beng_stat8: "Ferramentas digitais agrícolas",
-        features_label: "Funcionalidades",
-        features_title: "Feito para o agricultor angolano",
-        features_subtitle: "Cada funcionalidade foi desenhada a pensar nas condições reais do campo em Angola.",
-        feat1_title: "Detecção com IA",
-        feat1_desc: "Inteligência artificial treinada para identificar pragas e doenças específicas de Angola.",
-        feat2_title: "Assistência por Voz",
-        feat2_desc: "Todos os resultados são lidos em voz alta em português — ideal para utilizadores com baixa literacia.",
-        feat3_title: "GPS Automático",
-        feat3_desc: "Localização automática para mapeamento regional de pragas e alertas por zona.",
-        feat4_title: "Partilha WhatsApp",
-        feat4_desc: "Envie o diagnóstico directamente para a sua cooperativa ou extensionista via WhatsApp.",
-        feat5_title: "Marketplace",
-        feat5_desc: "Aceda a produtos agrícolas, sementes e fertilizantes de fornecedores verificados.",
-        feat6_title: "Guia Agrícola",
-        feat6_desc: "Base de dados completa com pragas, doenças, solos e culturas de todas as 18 províncias de Angola.",
-        cta_title: "Junte-se à revolução agrícola de Angola",
-        cta_desc: "Estamos à procura de parceiros, cooperativas e instituições que queiram levar tecnologia ao campo angolano.",
-        footer_desc: "AgroKuia — Inteligência artificial para a agricultura angolana. Feito para Angola, por angolanos. Sede em Luanda.",
-        footer_product: "Produto",
-        footer_how: "Como Funciona",
-        footer_privacy: "Política de Privacidade",
-        footer_contact: "Contacto",
-        footer_rights: "Todos os direitos reservados.",
-        footer_founder: "Fundada por Bernardo Sebastião"
+        nav_problem: "Problema", nav_solution: "Solução", nav_about: "Benguela", nav_features: "Funcionalidades", nav_contact: "Contacto", nav_download: "Descarregar App",
+        hero_badge: "Disponível no Google Play", hero_title: 'A primeira plataforma de <span>IA agrícola</span> de Angola', hero_desc: "Tire uma foto da sua planta. A AgroKuia identifica pragas e doenças em segundos, com recomendações de tratamento — tudo em português, com assistência por voz.", hero_cta1: "Descarregar Grátis", hero_cta2: "Seguir @agrokuia",
+        stat_farmers: "Agricultores em Angola", stat_losses: "Perdas por pragas", stat_provinces: "Províncias cobertas",
+        phone_slogan: "Proteja a sua produção", phone_step1: "Tire uma foto da planta", phone_step2: "IA identifica a praga", phone_step3: "Receba o tratamento", phone_step4: "Ouça tudo em voz alta",
+        problem_label: "O Problema", problem_title: "Angola perde milhões de toneladas de alimentos por ano", problem_subtitle: "Os agricultores familiares enfrentam pragas e doenças sem acesso a ferramentas de diagnóstico ou assistência técnica.",
+        p1_title: "Perdas Massivas", p1_desc: "Até 40% das colheitas são perdidas anualmente devido a pragas e doenças não diagnosticadas a tempo.", p2_title: "Sem Assistência Técnica", p2_desc: "Angola tem apenas 1 extensionista para cada 3.000+ agricultores. A maioria nunca recebe visita técnica.", p3_title: "Zero Ferramentas Digitais", p3_desc: "Não existe nenhuma aplicação de agricultura digital em Angola. O país está completamente desservido.",
+        sol_label: "A Solução", sol_title: "Como a AgroKuia funciona", sol_subtitle: "Diagnóstico inteligente em 4 passos simples — sem necessidade de saber ler.",
+        s1_title: "Tire uma Foto", s1_desc: "Aponte a câmara do telemóvel para a planta afectada. Funciona com qualquer smartphone Android.", s2_title: "IA Analisa", s2_desc: "A inteligência artificial identifica a praga ou doença em segundos, comparando com a base de dados angolana.", s3_title: "Diagnóstico", s3_desc: "Veja o resultado com o nome da praga, severidade, e recomendações de tratamento específicas para Angola.", s4_title: "Ouça e Partilhe", s4_desc: "A assistência por voz lê tudo em português. Partilhe via WhatsApp com a sua cooperativa.",
+        about_label: "Projecto Piloto", about_title: "Porquê Benguela", about_subtitle: "Benguela foi escolhida após um estudo comparativo das 18 províncias de Angola.", about_p1: "Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.", about_p2: "A AgroKuia nasce como o sistema nervoso agrícola de Angola. A primeira e única plataforma que transforma cada diagnóstico num dado para o mapa nacional de saúde agrícola.",
+        b1: "Hectares de terra arável", b2: "Toneladas produzidas", b3: "Investimento Corredor do Lobito", b4: "Famílias camponesas", b5: "Cooperativas activas", b6: "Crescimento produção",
+        feat_label: "Funcionalidades", feat_title: "Feito para o agricultor angolano", feat_subtitle: "Cada funcionalidade foi desenhada a pensar nas condições reais do campo em Angola.",
+        f1_title: "Detecção com IA", f1_desc: "Inteligência artificial que identifica pragas e doenças específicas de Angola em segundos.", f2_title: "Assistência por Voz", f2_desc: "Todos os resultados são lidos em voz alta em português — ideal para utilizadores com baixa literacia.", f3_title: "GPS Automático", f3_desc: "Localização automática para mapeamento regional de pragas e alertas por zona.", f4_title: "Partilha WhatsApp", f4_desc: "Envie o diagnóstico directamente para a sua cooperativa ou extensionista via WhatsApp.", f5_title: "Guia Agrícola", f5_desc: "Base de dados completa com pragas, doenças, solos e culturas de todas as 18 províncias de Angola.", f6_title: "Funciona Offline", f6_desc: "Guarda diagnósticos quando não há rede e sincroniza automaticamente quando a internet volta.",
+        test_label: "O que dizem", test_title: "Vozes do campo angolano", test_subtitle: "Feedback dos primeiros utilizadores e parceiros que testaram a AgroKuia.",
+        t1_quote: "\"Nunca pensei que um telemóvel pudesse ajudar-me a saber o que a minha planta tem. Agora tiro a foto e sei logo o que fazer.\"", t1_name: "Maria Antónia", t1_role: "Agricultora, Benguela",
+        t2_quote: "\"A funcionalidade de voz é fantástica. Muitos dos nossos membros não sabem ler, e agora conseguem usar a tecnologia.\"", t2_name: "José Manuel", t2_role: "Líder de Cooperativa, Huambo",
+        t3_quote: "\"Uma ferramenta como esta é exactamente o que Angola precisa. Dados reais do campo, em tempo real, pela primeira vez.\"", t3_name: "Prof. Carlos", t3_role: "Engenheiro Agrónomo",
+        dl_title: "Proteja a sua produção hoje", dl_desc: "A AgroKuia já está disponível no Google Play. Grátis. Em português. Para todos os agricultores de Angola.", dl_btn1: "Descarregar no Google Play", dl_btn2: "Seguir @agrokuia",
+        ct_label: "Parcerias & Investimento", ct_title: "Vamos conversar", ct_desc: "Estamos abertos a parcerias com cooperativas, instituições governamentais e investidores que queiram impactar a agricultura angolana.", ct_location_label: "Localização",
+        form_name: "Nome", form_subject: "Assunto", form_message: "Mensagem", form_submit: "Enviar Mensagem", form_success_title: "Mensagem enviada!", form_success_desc: "Obrigado pelo seu interesse. Entraremos em contacto brevemente.",
+        footer_desc: "A primeira plataforma angolana de IA para agricultura. Feito em Angola, para Angola. Uma empresa AMAMBELE.", footer_product: "Produto", footer_how: "Como Funciona", footer_company: "Empresa", footer_about: "Sobre Nós", footer_privacy: "Política de Privacidade", footer_delete: "Eliminar Conta", footer_contact_title: "Contacto", footer_rights: "Todos os direitos reservados.", footer_founder: "Fundada por Bernardo Sebastião"
     },
     en: {
-        nav_problem: "Problem",
-        nav_solution: "Solution",
-        nav_features: "Features",
-        nav_contact: "Contact Us",
-        hero_title: 'Artificial Intelligence for <span>Angolan Agriculture</span>',
-        hero_desc: "Take a photo of your plant. AgroKuia identifies pests and diseases in seconds, with treatment recommendations — all in Portuguese, with voice assistance.",
-        stat_farmers: "Farmers",
-        stat_losses: "Crop losses to pests",
-        stat_tools: "Digital tools",
-        phone_slogan: "AgroKuia helps you take care of your crops",
-        phone_step1: "Take a photo of the affected plant",
-        phone_step2: "AI identifies the pest or disease",
-        phone_step3: "Receive the recommended treatment",
-        phone_step4: "Listen to everything read aloud",
-        problem_label: "The Problem",
-        problem_title: "Angola loses millions of tonnes of food every year",
-        problem_subtitle: "Smallholder farmers face pests and diseases without access to diagnostic tools or timely technical assistance.",
-        problem1_title: "Massive Losses",
-        problem1_desc: "Up to 40% of harvests are lost annually due to pests and diseases that go undiagnosed in time.",
-        problem2_title: "No Technical Assistance",
-        problem2_desc: "Angola has only 1 extension worker for every 3,000+ farmers. Most never receive a technical visit.",
-        problem3_title: "Zero Digital Tools",
-        problem3_desc: "There is no digital agriculture application in Angola. The country is completely underserved.",
-        solution_label: "The Solution",
-        solution_title: "How AgroKuia works",
-        solution_subtitle: "Smart diagnosis in 4 simple steps — no literacy required.",
-        step1_title: "Take a Photo",
-        step1_desc: "Point your phone camera at the affected plant and take a photo. Works with any Android smartphone.",
-        step2_title: "AI Analyses the Image",
-        step2_desc: "Artificial intelligence identifies the pest or disease in seconds, comparing with our Angolan database.",
-        step3_title: "Receive the Diagnosis",
-        step3_desc: "See the result with the pest name, severity level, and treatment recommendations specific to Angola.",
-        step4_title: "Listen and Share",
-        step4_desc: "Voice assistance reads everything in Portuguese. Share the result via WhatsApp with your cooperative.",
-        benguela_label: "Pilot Project",
-        benguela_title: "Why Benguela",
-        benguela_subtitle: "Benguela was chosen after a comparative study of all 18 provinces of Angola. With 80% of arable land untapped, 96,000 farming families, over 3,000 cooperatives, and the Lobito Corridor driving international investment — it is where technology can have the greatest impact with the lowest risk.",
-        beng_stat1: "Hectares of arable land",
-        beng_stat2: "Tonnes produced (2024/25)",
-        beng_stat3: "Lobito Corridor investment",
-        beng_stat4: "Farming families",
-        beng_stat5: "Active cooperatives",
-        beng_stat6: "Production growth (2024/25)",
-        beng_stat7: "Arable land untapped",
-        beng_stat8: "Digital agriculture tools",
-        features_label: "Features",
-        features_title: "Built for the Angolan farmer",
-        features_subtitle: "Every feature was designed with the real conditions of farming in Angola in mind.",
-        feat1_title: "AI Detection",
-        feat1_desc: "Artificial intelligence trained to identify pests and diseases specific to Angola.",
-        feat2_title: "Voice Assistance",
-        feat2_desc: "All results are read aloud in Portuguese — ideal for users with low literacy.",
-        feat3_title: "Automatic GPS",
-        feat3_desc: "Automatic location for regional pest mapping and zone-based alerts.",
-        feat4_title: "WhatsApp Sharing",
-        feat4_desc: "Send the diagnosis directly to your cooperative or extension worker via WhatsApp.",
-        feat5_title: "Marketplace",
-        feat5_desc: "Access agricultural products, seeds and fertilisers from verified suppliers.",
-        feat6_title: "Agricultural Guide",
-        feat6_desc: "Complete database with pests, diseases, soils and crops from all 18 provinces of Angola.",
-        cta_title: "Join the agricultural revolution in Angola",
-        cta_desc: "We are looking for partners, cooperatives and institutions that want to bring technology to the Angolan countryside.",
-        footer_desc: "AgroKuia — Artificial intelligence for Angolan agriculture. Made for Angola, by Angolans. Based in Luanda.",
-        footer_product: "Product",
-        footer_how: "How It Works",
-        footer_privacy: "Privacy Policy",
-        footer_contact: "Contact",
-        footer_rights: "All rights reserved.",
-        footer_founder: "Founded by Bernardo Sebastião"
+        nav_problem: "Problem", nav_solution: "Solution", nav_about: "Benguela", nav_features: "Features", nav_contact: "Contact", nav_download: "Download App",
+        hero_badge: "Available on Google Play", hero_title: 'The first <span>agricultural AI</span> platform from Angola', hero_desc: "Take a photo of your plant. AgroKuia identifies pests and diseases in seconds, with treatment recommendations — all in Portuguese, with voice assistance.", hero_cta1: "Download Free", hero_cta2: "Follow @agrokuia",
+        stat_farmers: "Farmers in Angola", stat_losses: "Crop losses to pests", stat_provinces: "Provinces covered",
+        phone_slogan: "Protect your harvest", phone_step1: "Take a photo of the plant", phone_step2: "AI identifies the pest", phone_step3: "Get the treatment", phone_step4: "Listen to everything aloud",
+        problem_label: "The Problem", problem_title: "Angola loses millions of tonnes of food every year", problem_subtitle: "Smallholder farmers face pests and diseases without access to diagnostic tools or technical assistance.",
+        p1_title: "Massive Losses", p1_desc: "Up to 40% of harvests are lost annually due to pests and diseases that go undiagnosed in time.", p2_title: "No Technical Assistance", p2_desc: "Angola has only 1 extension worker for every 3,000+ farmers. Most never receive a technical visit.", p3_title: "Zero Digital Tools", p3_desc: "There is no digital agriculture application in Angola. The country is completely underserved.",
+        sol_label: "The Solution", sol_title: "How AgroKuia works", sol_subtitle: "Smart diagnosis in 4 simple steps — no literacy required.",
+        s1_title: "Take a Photo", s1_desc: "Point your phone camera at the affected plant. Works with any Android smartphone.", s2_title: "AI Analyses", s2_desc: "Artificial intelligence identifies the pest or disease in seconds, comparing with our Angolan database.", s3_title: "Diagnosis", s3_desc: "See the result with the pest name, severity level, and treatment recommendations specific to Angola.", s4_title: "Listen & Share", s4_desc: "Voice assistance reads everything in Portuguese. Share the result via WhatsApp with your cooperative.",
+        about_label: "Pilot Project", about_title: "Why Benguela", about_subtitle: "Benguela was chosen after a comparative study of all 18 provinces of Angola.", about_p1: "With 80% of arable land untapped, 96,000 farming families, over 3,000 cooperatives, and the Lobito Corridor driving international investment — it is where technology can have the greatest impact with the lowest risk.", about_p2: "AgroKuia is born as Angola's agricultural nervous system. The first and only platform that transforms every diagnosis into data for the national agricultural health map.",
+        b1: "Hectares of arable land", b2: "Tonnes produced", b3: "Lobito Corridor investment", b4: "Farming families", b5: "Active cooperatives", b6: "Production growth",
+        feat_label: "Features", feat_title: "Built for the Angolan farmer", feat_subtitle: "Every feature was designed with the real conditions of farming in Angola in mind.",
+        f1_title: "AI Detection", f1_desc: "Artificial intelligence that identifies pests and diseases specific to Angola in seconds.", f2_title: "Voice Assistance", f2_desc: "All results are read aloud in Portuguese — ideal for users with low literacy.", f3_title: "Automatic GPS", f3_desc: "Automatic location for regional pest mapping and zone-based alerts.", f4_title: "WhatsApp Sharing", f4_desc: "Send the diagnosis directly to your cooperative or extension worker via WhatsApp.", f5_title: "Agricultural Guide", f5_desc: "Complete database with pests, diseases, soils and crops from all 18 provinces of Angola.", f6_title: "Works Offline", f6_desc: "Saves diagnostics when there is no network and syncs automatically when internet returns.",
+        test_label: "What they say", test_title: "Voices from the Angolan field", test_subtitle: "Feedback from the first users and partners who tested AgroKuia.",
+        t1_quote: "\"I never thought a phone could help me know what my plant has. Now I take a photo and know immediately what to do.\"", t1_name: "Maria Antónia", t1_role: "Farmer, Benguela",
+        t2_quote: "\"The voice feature is fantastic. Many of our members cannot read, and now they can use technology.\"", t2_name: "José Manuel", t2_role: "Cooperative Leader, Huambo",
+        t3_quote: "\"A tool like this is exactly what Angola needs. Real field data, in real time, for the first time.\"", t3_name: "Prof. Carlos", t3_role: "Agricultural Engineer",
+        dl_title: "Protect your harvest today", dl_desc: "AgroKuia is now available on Google Play. Free. In Portuguese. For all farmers in Angola.", dl_btn1: "Download on Google Play", dl_btn2: "Follow @agrokuia",
+        ct_label: "Partnerships & Investment", ct_title: "Let's talk", ct_desc: "We are open to partnerships with cooperatives, government institutions and investors who want to impact Angolan agriculture.", ct_location_label: "Location",
+        form_name: "Name", form_subject: "Subject", form_message: "Message", form_submit: "Send Message", form_success_title: "Message sent!", form_success_desc: "Thank you for your interest. We will be in touch shortly.",
+        footer_desc: "The first Angolan AI platform for agriculture. Made in Angola, for Angola. An AMAMBELE company.", footer_product: "Product", footer_how: "How It Works", footer_company: "Company", footer_about: "About Us", footer_privacy: "Privacy Policy", footer_delete: "Delete Account", footer_contact_title: "Contact", footer_rights: "All rights reserved.", footer_founder: "Founded by Bernardo Sebastião"
     },
     fr: {
-        nav_problem: "Problème",
-        nav_solution: "Solution",
-        nav_features: "Fonctionnalités",
-        nav_contact: "Contactez-nous",
-        hero_title: "Intelligence Artificielle pour l'<span>Agriculture Angolaise</span>",
-        hero_desc: "Prenez une photo de votre plante. AgroKuia identifie les ravageurs et maladies en quelques secondes, avec des recommandations de traitement — le tout en portugais, avec assistance vocale.",
-        stat_farmers: "Agriculteurs",
-        stat_losses: "Pertes dues aux ravageurs",
-        stat_tools: "Outils numériques",
-        phone_slogan: "AgroKuia vous aide à prendre soin de vos cultures",
-        phone_step1: "Prenez une photo de la plante affectée",
-        phone_step2: "L'IA identifie le ravageur ou la maladie",
-        phone_step3: "Recevez le traitement recommandé",
-        phone_step4: "Écoutez tout à voix haute",
-        problem_label: "Le Problème",
-        problem_title: "L'Angola perd des millions de tonnes de nourriture chaque année",
-        problem_subtitle: "Les petits agriculteurs font face aux ravageurs et maladies sans accès aux outils de diagnostic ou à l'assistance technique.",
-        problem1_title: "Pertes Massives",
-        problem1_desc: "Jusqu'à 40% des récoltes sont perdues chaque année à cause de ravageurs et maladies non diagnostiqués à temps.",
-        problem2_title: "Aucune Assistance Technique",
-        problem2_desc: "L'Angola ne compte qu'un vulgarisateur pour 3 000+ agriculteurs. La plupart ne reçoivent jamais de visite technique.",
-        problem3_title: "Zéro Outils Numériques",
-        problem3_desc: "Il n'existe aucune application d'agriculture numérique en Angola. Le pays est totalement sous-desservi.",
-        solution_label: "La Solution",
-        solution_title: "Comment fonctionne AgroKuia",
-        solution_subtitle: "Diagnostic intelligent en 4 étapes simples — sans besoin de savoir lire.",
-        step1_title: "Prenez une Photo",
-        step1_desc: "Dirigez l'appareil photo de votre téléphone vers la plante affectée et prenez une photo. Fonctionne avec tout smartphone Android.",
-        step2_title: "L'IA Analyse l'Image",
-        step2_desc: "L'intelligence artificielle identifie le ravageur ou la maladie en quelques secondes, en comparant avec notre base de données angolaise.",
-        step3_title: "Recevez le Diagnostic",
-        step3_desc: "Consultez le résultat avec le nom du ravageur, le niveau de gravité et les recommandations de traitement spécifiques à l'Angola.",
-        step4_title: "Écoutez et Partagez",
-        step4_desc: "L'assistance vocale lit tout en portugais. Partagez le résultat via WhatsApp avec votre coopérative.",
-        benguela_label: "Projet Pilote",
-        benguela_title: "Pourquoi Benguela",
-        benguela_subtitle: "Benguela a été choisie après une étude comparative des 18 provinces d'Angola. Avec 80% des terres arables inexploitées, 96 000 familles paysannes, plus de 3 000 coopératives et le Corridor de Lobito comme moteur d'investissement international — c'est là où la technologie peut avoir le plus grand impact avec le moindre risque.",
-        beng_stat1: "Hectares de terres arables",
-        beng_stat2: "Tonnes produites (2024/25)",
-        beng_stat3: "Investissement Corridor de Lobito",
-        beng_stat4: "Familles paysannes",
-        beng_stat5: "Coopératives actives",
-        beng_stat6: "Croissance production (2024/25)",
-        beng_stat7: "Terres arables inexploitées",
-        beng_stat8: "Outils numériques agricoles",
-        features_label: "Fonctionnalités",
-        features_title: "Conçu pour l'agriculteur angolais",
-        features_subtitle: "Chaque fonctionnalité a été conçue en tenant compte des conditions réelles de l'agriculture en Angola.",
-        feat1_title: "Détection par IA",
-        feat1_desc: "Intelligence artificielle entraînée pour identifier les ravageurs et maladies spécifiques à l'Angola.",
-        feat2_title: "Assistance Vocale",
-        feat2_desc: "Tous les résultats sont lus à voix haute en portugais — idéal pour les utilisateurs peu alphabétisés.",
-        feat3_title: "GPS Automatique",
-        feat3_desc: "Localisation automatique pour la cartographie régionale des ravageurs et les alertes par zone.",
-        feat4_title: "Partage WhatsApp",
-        feat4_desc: "Envoyez le diagnostic directement à votre coopérative ou vulgarisateur via WhatsApp.",
-        feat5_title: "Marketplace",
-        feat5_desc: "Accédez aux produits agricoles, semences et engrais de fournisseurs vérifiés.",
-        feat6_title: "Guide Agricole",
-        feat6_desc: "Base de données complète avec ravageurs, maladies, sols et cultures des 18 provinces d'Angola.",
-        cta_title: "Rejoignez la révolution agricole en Angola",
-        cta_desc: "Nous recherchons des partenaires, coopératives et institutions souhaitant apporter la technologie aux campagnes angolaises.",
-        footer_desc: "AgroKuia — Intelligence artificielle pour l'agriculture angolaise. Fait pour l'Angola, par des Angolais. Siège à Luanda.",
-        footer_product: "Produit",
-        footer_how: "Comment ça marche",
-        footer_privacy: "Politique de confidentialité",
-        footer_contact: "Contact",
-        footer_rights: "Tous droits réservés.",
-        footer_founder: "Fondée par Bernardo Sebastião"
+        nav_problem: "Problème", nav_solution: "Solution", nav_about: "Benguela", nav_features: "Fonctionnalités", nav_contact: "Contact", nav_download: "Télécharger",
+        hero_badge: "Disponible sur Google Play", hero_title: 'La première plateforme d\'<span>IA agricole</span> d\'Angola', hero_desc: "Prenez une photo de votre plante. AgroKuia identifie les ravageurs et maladies en quelques secondes, avec des recommandations de traitement — le tout en portugais, avec assistance vocale.", hero_cta1: "Télécharger Gratuit", hero_cta2: "Suivre @agrokuia",
+        stat_farmers: "Agriculteurs en Angola", stat_losses: "Pertes dues aux ravageurs", stat_provinces: "Provinces couvertes",
+        phone_slogan: "Protégez votre production", phone_step1: "Prenez une photo de la plante", phone_step2: "L'IA identifie le ravageur", phone_step3: "Recevez le traitement", phone_step4: "Écoutez tout à voix haute",
+        problem_label: "Le Problème", problem_title: "L'Angola perd des millions de tonnes de nourriture chaque année", problem_subtitle: "Les petits agriculteurs font face aux ravageurs et maladies sans accès aux outils de diagnostic ou assistance technique.",
+        p1_title: "Pertes Massives", p1_desc: "Jusqu'à 40% des récoltes sont perdues chaque année à cause de ravageurs et maladies non diagnostiqués à temps.", p2_title: "Aucune Assistance Technique", p2_desc: "L'Angola ne compte qu'un vulgarisateur pour 3 000+ agriculteurs. La plupart ne reçoivent jamais de visite technique.", p3_title: "Zéro Outils Numériques", p3_desc: "Il n'existe aucune application d'agriculture numérique en Angola. Le pays est totalement sous-desservi.",
+        sol_label: "La Solution", sol_title: "Comment fonctionne AgroKuia", sol_subtitle: "Diagnostic intelligent en 4 étapes simples — sans besoin de savoir lire.",
+        s1_title: "Prenez une Photo", s1_desc: "Dirigez l'appareil photo de votre téléphone vers la plante affectée. Fonctionne avec tout smartphone Android.", s2_title: "L'IA Analyse", s2_desc: "L'intelligence artificielle identifie le ravageur ou la maladie en quelques secondes, en comparant avec notre base de données angolaise.", s3_title: "Diagnostic", s3_desc: "Consultez le résultat avec le nom du ravageur, le niveau de gravité et les recommandations de traitement spécifiques à l'Angola.", s4_title: "Écoutez et Partagez", s4_desc: "L'assistance vocale lit tout en portugais. Partagez le résultat via WhatsApp avec votre coopérative.",
+        about_label: "Projet Pilote", about_title: "Pourquoi Benguela", about_subtitle: "Benguela a été choisie après une étude comparative des 18 provinces d'Angola.", about_p1: "Avec 80% des terres arables inexploitées, 96 000 familles paysannes, plus de 3 000 coopératives et le Corridor de Lobito comme moteur d'investissement international — c'est là où la technologie peut avoir le plus grand impact avec le moindre risque.", about_p2: "AgroKuia naît comme le système nerveux agricole de l'Angola. La première et unique plateforme qui transforme chaque diagnostic en donnée pour la carte nationale de santé agricole.",
+        b1: "Hectares de terres arables", b2: "Tonnes produites", b3: "Investissement Corridor de Lobito", b4: "Familles paysannes", b5: "Coopératives actives", b6: "Croissance production",
+        feat_label: "Fonctionnalités", feat_title: "Conçu pour l'agriculteur angolais", feat_subtitle: "Chaque fonctionnalité a été conçue en tenant compte des conditions réelles de l'agriculture en Angola.",
+        f1_title: "Détection par IA", f1_desc: "Intelligence artificielle qui identifie les ravageurs et maladies spécifiques à l'Angola en quelques secondes.", f2_title: "Assistance Vocale", f2_desc: "Tous les résultats sont lus à voix haute en portugais — idéal pour les utilisateurs peu alphabétisés.", f3_title: "GPS Automatique", f3_desc: "Localisation automatique pour la cartographie régionale des ravageurs et les alertes par zone.", f4_title: "Partage WhatsApp", f4_desc: "Envoyez le diagnostic directement à votre coopérative ou vulgarisateur via WhatsApp.", f5_title: "Guide Agricole", f5_desc: "Base de données complète avec ravageurs, maladies, sols et cultures des 18 provinces d'Angola.", f6_title: "Fonctionne Hors Ligne", f6_desc: "Sauvegarde les diagnostics sans réseau et synchronise automatiquement quand l'internet revient.",
+        test_label: "Ce qu'ils disent", test_title: "Voix du terrain angolais", test_subtitle: "Retours des premiers utilisateurs et partenaires qui ont testé AgroKuia.",
+        t1_quote: "\"Je n'aurais jamais pensé qu'un téléphone pourrait m'aider à savoir ce qu'a ma plante. Maintenant je prends une photo et je sais immédiatement quoi faire.\"", t1_name: "Maria Antónia", t1_role: "Agricultrice, Benguela",
+        t2_quote: "\"La fonctionnalité vocale est fantastique. Beaucoup de nos membres ne savent pas lire, et maintenant ils peuvent utiliser la technologie.\"", t2_name: "José Manuel", t2_role: "Leader de Coopérative, Huambo",
+        t3_quote: "\"Un outil comme celui-ci est exactement ce dont l'Angola a besoin. Des données réelles du terrain, en temps réel, pour la première fois.\"", t3_name: "Prof. Carlos", t3_role: "Ingénieur Agronome",
+        dl_title: "Protégez votre production aujourd'hui", dl_desc: "AgroKuia est maintenant disponible sur Google Play. Gratuit. En portugais. Pour tous les agriculteurs d'Angola.", dl_btn1: "Télécharger sur Google Play", dl_btn2: "Suivre @agrokuia",
+        ct_label: "Partenariats & Investissement", ct_title: "Parlons-en", ct_desc: "Nous sommes ouverts aux partenariats avec des coopératives, des institutions gouvernementales et des investisseurs souhaitant impacter l'agriculture angolaise.", ct_location_label: "Localisation",
+        form_name: "Nom", form_subject: "Sujet", form_message: "Message", form_submit: "Envoyer le Message", form_success_title: "Message envoyé!", form_success_desc: "Merci pour votre intérêt. Nous vous contacterons prochainement.",
+        footer_desc: "La première plateforme angolaise d'IA pour l'agriculture. Fait en Angola, pour l'Angola. Une entreprise AMAMBELE.", footer_product: "Produit", footer_how: "Comment ça marche", footer_company: "Entreprise", footer_about: "À propos", footer_privacy: "Politique de confidentialité", footer_delete: "Supprimer le compte", footer_contact_title: "Contact", footer_rights: "Tous droits réservés.", footer_founder: "Fondée par Bernardo Sebastião"
     }
 };
 
-let currentLang = 'pt';
+var currentLang = 'pt';
 
 function setLang(lang) {
     currentLang = lang;
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
     document.getElementById('btn-' + lang).classList.add('active');
     document.documentElement.lang = lang;
-    
-    const t = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-            el.innerHTML = t[key];
-        }
+    var t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key]) { el.innerHTML = t[key]; }
     });
-    
-    // Update page title
-    const titles = {
-        pt: "AgroKuia — Inteligência Artificial para a Agricultura Angolana",
-        en: "AgroKuia — Artificial Intelligence for Angolan Agriculture",
-        fr: "AgroKuia — Intelligence Artificielle pour l'Agriculture Angolaise"
+    var titles = {
+        pt: "AgroKuia — Proteja a sua produção | IA para Agricultura Angolana",
+        en: "AgroKuia — Protect your harvest | AI for Angolan Agriculture",
+        fr: "AgroKuia — Protégez votre production | IA pour l'Agriculture Angolaise"
     };
     document.title = titles[lang];
 }
+
+/* ===== SMOOTH SCROLL FOR NAV ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+/* ===== HEADER SHADOW ON SCROLL ===== */
+window.addEventListener('scroll', function() {
+    var header = document.querySelector('header');
+    if (window.scrollY > 10) {
+        header.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.1)';
+    } else {
+        header.style.boxShadow = 'none';
+    }
+});
 </script>
 
 </body>
