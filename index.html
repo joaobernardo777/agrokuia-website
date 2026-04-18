@@ -404,6 +404,25 @@
             margin-bottom: 48px;
         }
 
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            background: var(--green-50);
+            padding: 80px 24px;
+        }
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            background: var(--gray-900);
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            border-radius: var(--radius-xl);
+        }
+
         /* ===== PROBLEM ===== */
         .problem { background: var(--gray-50); }
         .problem-grid {
@@ -1053,7 +1072,7 @@
                     <div class="label" data-i18n="stat_losses">Perdas por pragas</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="number">18</div>
+                    <div class="number">21</div>
                     <div class="label" data-i18n="stat_provinces">Províncias cobertas</div>
                 </div>
             </div>
@@ -1082,6 +1101,20 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Section -->
+<section class="video-section" id="video">
+    <div class="section-container" style="text-align:center;">
+        <div class="section-label" data-i18n="video_label">Veja em Acção</div>
+        <h2 class="section-title" style="margin-left:auto;margin-right:auto;" data-i18n="video_title">Cada foto é um diagnóstico.<br>Cada diagnóstico é história.</h2>
+        <div class="video-wrapper">
+            <video controls playsinline preload="metadata" poster="images/hero-farmers.jpg">
+                <source src="videos/AgroKuia_Pitch_Video.mp4" type="video/mp4">
+                O seu navegador não suporta vídeo.
+            </video>
         </div>
     </div>
 </section>
@@ -1156,7 +1189,7 @@
             <div class="about-text">
                 <div class="section-label" data-i18n="about_label">Projecto Piloto</div>
                 <h2 class="section-title" data-i18n="about_title">Porquê Benguela</h2>
-                <p class="section-subtitle" data-i18n="about_subtitle">Benguela foi escolhida após um estudo comparativo das 18 províncias de Angola.</p>
+                <p class="section-subtitle" data-i18n="about_subtitle">Benguela foi escolhida após um estudo comparativo das 21 províncias de Angola.</p>
                 <p data-i18n="about_p1">Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.</p>
                 <p data-i18n="about_p2">A AgroKuia nasce como o sistema nervoso agrícola de Angola. A primeira e única plataforma que transforma cada diagnóstico num dado para o mapa nacional de saúde agrícola.</p>
             </div>
@@ -1226,7 +1259,7 @@
             <div class="feature-card">
                 <div class="feature-icon">📚</div>
                 <h3 data-i18n="f5_title">Guia Agrícola</h3>
-                <p data-i18n="f5_desc">Base de dados completa com pragas, doenças, solos e culturas de todas as 18 províncias de Angola.</p>
+                <p data-i18n="f5_desc">Base de dados completa com pragas, doenças, solos e culturas de todas as 21 províncias de Angola.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🌐</div>
@@ -1442,15 +1475,16 @@ var translations = {
         nav_problem: "Problema", nav_solution: "Solução", nav_about: "Benguela", nav_features: "Funcionalidades", nav_contact: "Contacto", nav_download: "Descarregar App",
         hero_badge: "Disponível no Google Play", hero_title: 'A primeira plataforma de <span>IA agrícola</span> de Angola', hero_desc: "Tire uma foto da sua planta. A AgroKuia identifica pragas e doenças em segundos, com recomendações de tratamento — tudo em português, com assistência por voz.", hero_cta1: "Descarregar Grátis", hero_cta2: "Seguir @agrokuia",
         stat_farmers: "Agricultores em Angola", stat_losses: "Perdas por pragas", stat_provinces: "Províncias cobertas",
+        video_label: "Veja em Acção", video_title: 'Cada foto é um diagnóstico.<br>Cada diagnóstico é história.',
         phone_slogan: "Proteja a sua produção", phone_step1: "Tire uma foto da planta", phone_step2: "IA identifica a praga", phone_step3: "Receba o tratamento", phone_step4: "Ouça tudo em voz alta",
         problem_label: "O Problema", problem_title: "Angola perde milhões de toneladas de alimentos por ano", problem_subtitle: "Os agricultores familiares enfrentam pragas e doenças sem acesso a ferramentas de diagnóstico ou assistência técnica.",
         p1_title: "Perdas Massivas", p1_desc: "Até 40% das colheitas são perdidas anualmente devido a pragas e doenças não diagnosticadas a tempo.", p2_title: "Sem Assistência Técnica", p2_desc: "Angola tem apenas 1 extensionista para cada 3.000+ agricultores. A maioria nunca recebe visita técnica.", p3_title: "Zero Ferramentas Digitais", p3_desc: "Não existe nenhuma aplicação de agricultura digital em Angola. O país está completamente desservido.",
         sol_label: "A Solução", sol_title: "Como a AgroKuia funciona", sol_subtitle: "Diagnóstico inteligente em 4 passos simples — sem necessidade de saber ler.",
         s1_title: "Tire uma Foto", s1_desc: "Aponte a câmara do telemóvel para a planta afectada. Funciona com qualquer smartphone Android.", s2_title: "IA Analisa", s2_desc: "A inteligência artificial identifica a praga ou doença em segundos, comparando com a base de dados angolana.", s3_title: "Diagnóstico", s3_desc: "Veja o resultado com o nome da praga, severidade, e recomendações de tratamento específicas para Angola.", s4_title: "Ouça e Partilhe", s4_desc: "A assistência por voz lê tudo em português. Partilhe via WhatsApp com a sua cooperativa.",
-        about_label: "Projecto Piloto", about_title: "Porquê Benguela", about_subtitle: "Benguela foi escolhida após um estudo comparativo das 18 províncias de Angola.", about_p1: "Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.", about_p2: "A AgroKuia nasce como o sistema nervoso agrícola de Angola. A primeira e única plataforma que transforma cada diagnóstico num dado para o mapa nacional de saúde agrícola.",
+        about_label: "Projecto Piloto", about_title: "Porquê Benguela", about_subtitle: "Benguela foi escolhida após um estudo comparativo das 21 províncias de Angola.", about_p1: "Com 80% da terra arável por explorar, 96.000 famílias camponesas, mais de 3.000 cooperativas e o Corredor do Lobito como motor de investimento internacional — é onde a tecnologia pode ter o maior impacto com o menor risco.", about_p2: "A AgroKuia nasce como o sistema nervoso agrícola de Angola. A primeira e única plataforma que transforma cada diagnóstico num dado para o mapa nacional de saúde agrícola.",
         b1: "Hectares de terra arável", b2: "Toneladas produzidas", b3: "Investimento Corredor do Lobito", b4: "Famílias camponesas", b5: "Cooperativas activas", b6: "Crescimento produção",
         feat_label: "Funcionalidades", feat_title: "Feito para o agricultor angolano", feat_subtitle: "Cada funcionalidade foi desenhada a pensar nas condições reais do campo em Angola.",
-        f1_title: "Detecção com IA", f1_desc: "Inteligência artificial que identifica pragas e doenças específicas de Angola em segundos.", f2_title: "Assistência por Voz", f2_desc: "Todos os resultados são lidos em voz alta em português — ideal para utilizadores com baixa literacia.", f3_title: "GPS Automático", f3_desc: "Localização automática para mapeamento regional de pragas e alertas por zona.", f4_title: "Partilha WhatsApp", f4_desc: "Envie o diagnóstico directamente para a sua cooperativa ou extensionista via WhatsApp.", f5_title: "Guia Agrícola", f5_desc: "Base de dados completa com pragas, doenças, solos e culturas de todas as 18 províncias de Angola.", f6_title: "Funciona Offline", f6_desc: "Guarda diagnósticos quando não há rede e sincroniza automaticamente quando a internet volta.",
+        f1_title: "Detecção com IA", f1_desc: "Inteligência artificial que identifica pragas e doenças específicas de Angola em segundos.", f2_title: "Assistência por Voz", f2_desc: "Todos os resultados são lidos em voz alta em português — ideal para utilizadores com baixa literacia.", f3_title: "GPS Automático", f3_desc: "Localização automática para mapeamento regional de pragas e alertas por zona.", f4_title: "Partilha WhatsApp", f4_desc: "Envie o diagnóstico directamente para a sua cooperativa ou extensionista via WhatsApp.", f5_title: "Guia Agrícola", f5_desc: "Base de dados completa com pragas, doenças, solos e culturas de todas as 21 províncias de Angola.", f6_title: "Funciona Offline", f6_desc: "Guarda diagnósticos quando não há rede e sincroniza automaticamente quando a internet volta.",
         test_label: "O que dizem", test_title: "Vozes do campo angolano", test_subtitle: "Feedback dos primeiros utilizadores e parceiros que testaram a AgroKuia.",
         t1_quote: "\"Nunca pensei que um telemóvel pudesse ajudar-me a saber o que a minha planta tem. Agora tiro a foto e sei logo o que fazer.\"", t1_name: "Maria Antónia", t1_role: "Agricultora, Benguela",
         t2_quote: "\"A funcionalidade de voz é fantástica. Muitos dos nossos membros não sabem ler, e agora conseguem usar a tecnologia.\"", t2_name: "José Manuel", t2_role: "Líder de Cooperativa, Huambo",
@@ -1463,16 +1497,17 @@ var translations = {
     en: {
         nav_problem: "Problem", nav_solution: "Solution", nav_about: "Benguela", nav_features: "Features", nav_contact: "Contact", nav_download: "Download App",
         hero_badge: "Available on Google Play", hero_title: 'The first <span>agricultural AI</span> platform from Angola', hero_desc: "Take a photo of your plant. AgroKuia identifies pests and diseases in seconds, with treatment recommendations — all in Portuguese, with voice assistance.", hero_cta1: "Download Free", hero_cta2: "Follow @agrokuia",
-        stat_farmers: "Farmers in Angola", stat_losses: "Crop losses to pests", stat_provinces: "Provinces covered",
+          stat_farmers: "Farmers in Angola", stat_losses: "Crop losses", stat_provinces: "Provinces covered",
+        video_label: "See it in Action", video_title: 'Every photo is a diagnosis.<br>Every diagnosis is history.',
         phone_slogan: "Protect your harvest", phone_step1: "Take a photo of the plant", phone_step2: "AI identifies the pest", phone_step3: "Get the treatment", phone_step4: "Listen to everything aloud",
         problem_label: "The Problem", problem_title: "Angola loses millions of tonnes of food every year", problem_subtitle: "Smallholder farmers face pests and diseases without access to diagnostic tools or technical assistance.",
         p1_title: "Massive Losses", p1_desc: "Up to 40% of harvests are lost annually due to pests and diseases that go undiagnosed in time.", p2_title: "No Technical Assistance", p2_desc: "Angola has only 1 extension worker for every 3,000+ farmers. Most never receive a technical visit.", p3_title: "Zero Digital Tools", p3_desc: "There is no digital agriculture application in Angola. The country is completely underserved.",
         sol_label: "The Solution", sol_title: "How AgroKuia works", sol_subtitle: "Smart diagnosis in 4 simple steps — no literacy required.",
         s1_title: "Take a Photo", s1_desc: "Point your phone camera at the affected plant. Works with any Android smartphone.", s2_title: "AI Analyses", s2_desc: "Artificial intelligence identifies the pest or disease in seconds, comparing with our Angolan database.", s3_title: "Diagnosis", s3_desc: "See the result with the pest name, severity level, and treatment recommendations specific to Angola.", s4_title: "Listen & Share", s4_desc: "Voice assistance reads everything in Portuguese. Share the result via WhatsApp with your cooperative.",
-        about_label: "Pilot Project", about_title: "Why Benguela", about_subtitle: "Benguela was chosen after a comparative study of all 18 provinces of Angola.", about_p1: "With 80% of arable land untapped, 96,000 farming families, over 3,000 cooperatives, and the Lobito Corridor driving international investment — it is where technology can have the greatest impact with the lowest risk.", about_p2: "AgroKuia is born as Angola's agricultural nervous system. The first and only platform that transforms every diagnosis into data for the national agricultural health map.",
+        about_label: "Pilot Project", about_title: "Why Benguela", about_subtitle: "Benguela was chosen after a comparative study of all 21 provinces of Angola.", about_p1: "With 80% of arable land untapped, 96,000 farming families, over 3,000 cooperatives, and the Lobito Corridor driving international investment — it is where technology can have the greatest impact with the lowest risk.", about_p2: "AgroKuia is born as Angola's agricultural nervous system. The first and only platform that transforms every diagnosis into data for the national agricultural health map.",
         b1: "Hectares of arable land", b2: "Tonnes produced", b3: "Lobito Corridor investment", b4: "Farming families", b5: "Active cooperatives", b6: "Production growth",
         feat_label: "Features", feat_title: "Built for the Angolan farmer", feat_subtitle: "Every feature was designed with the real conditions of farming in Angola in mind.",
-        f1_title: "AI Detection", f1_desc: "Artificial intelligence that identifies pests and diseases specific to Angola in seconds.", f2_title: "Voice Assistance", f2_desc: "All results are read aloud in Portuguese — ideal for users with low literacy.", f3_title: "Automatic GPS", f3_desc: "Automatic location for regional pest mapping and zone-based alerts.", f4_title: "WhatsApp Sharing", f4_desc: "Send the diagnosis directly to your cooperative or extension worker via WhatsApp.", f5_title: "Agricultural Guide", f5_desc: "Complete database with pests, diseases, soils and crops from all 18 provinces of Angola.", f6_title: "Works Offline", f6_desc: "Saves diagnostics when there is no network and syncs automatically when internet returns.",
+        f1_title: "AI Detection", f1_desc: "Artificial intelligence that identifies pests and diseases specific to Angola in seconds.", f2_title: "Voice Assistance", f2_desc: "All results are read aloud in Portuguese — ideal for users with low literacy.", f3_title: "Automatic GPS", f3_desc: "Automatic location for regional pest mapping and zone-based alerts.", f4_title: "WhatsApp Sharing", f4_desc: "Send the diagnosis directly to your cooperative or extension worker via WhatsApp.", f5_title: "Agricultural Guide", f5_desc: "Complete database with pests, diseases, soils and crops from all 21 provinces of Angola.", f6_title: "Works Offline", f6_desc: "Saves diagnostics when there is no network and syncs automatically when internet returns.",
         test_label: "What they say", test_title: "Voices from the Angolan field", test_subtitle: "Feedback from the first users and partners who tested AgroKuia.",
         t1_quote: "\"I never thought a phone could help me know what my plant has. Now I take a photo and know immediately what to do.\"", t1_name: "Maria Antónia", t1_role: "Farmer, Benguela",
         t2_quote: "\"The voice feature is fantastic. Many of our members cannot read, and now they can use technology.\"", t2_name: "José Manuel", t2_role: "Cooperative Leader, Huambo",
@@ -1485,16 +1520,17 @@ var translations = {
     fr: {
         nav_problem: "Problème", nav_solution: "Solution", nav_about: "Benguela", nav_features: "Fonctionnalités", nav_contact: "Contact", nav_download: "Télécharger",
         hero_badge: "Disponible sur Google Play", hero_title: 'La première plateforme d\'<span>IA agricole</span> d\'Angola', hero_desc: "Prenez une photo de votre plante. AgroKuia identifie les ravageurs et maladies en quelques secondes, avec des recommandations de traitement — le tout en portugais, avec assistance vocale.", hero_cta1: "Télécharger Gratuit", hero_cta2: "Suivre @agrokuia",
-        stat_farmers: "Agriculteurs en Angola", stat_losses: "Pertes dues aux ravageurs", stat_provinces: "Provinces couvertes",
+           stat_farmers: "Agriculteurs en Angola", stat_losses: "Pertes par ravageurs", stat_provinces: "Provinces couvertes",
+        video_label: "Voyez en Action", video_title: 'Chaque photo est un diagnostic.<br>Chaque diagnostic est histoire.',
         phone_slogan: "Protégez votre production", phone_step1: "Prenez une photo de la plante", phone_step2: "L'IA identifie le ravageur", phone_step3: "Recevez le traitement", phone_step4: "Écoutez tout à voix haute",
         problem_label: "Le Problème", problem_title: "L'Angola perd des millions de tonnes de nourriture chaque année", problem_subtitle: "Les petits agriculteurs font face aux ravageurs et maladies sans accès aux outils de diagnostic ou assistance technique.",
         p1_title: "Pertes Massives", p1_desc: "Jusqu'à 40% des récoltes sont perdues chaque année à cause de ravageurs et maladies non diagnostiqués à temps.", p2_title: "Aucune Assistance Technique", p2_desc: "L'Angola ne compte qu'un vulgarisateur pour 3 000+ agriculteurs. La plupart ne reçoivent jamais de visite technique.", p3_title: "Zéro Outils Numériques", p3_desc: "Il n'existe aucune application d'agriculture numérique en Angola. Le pays est totalement sous-desservi.",
         sol_label: "La Solution", sol_title: "Comment fonctionne AgroKuia", sol_subtitle: "Diagnostic intelligent en 4 étapes simples — sans besoin de savoir lire.",
         s1_title: "Prenez une Photo", s1_desc: "Dirigez l'appareil photo de votre téléphone vers la plante affectée. Fonctionne avec tout smartphone Android.", s2_title: "L'IA Analyse", s2_desc: "L'intelligence artificielle identifie le ravageur ou la maladie en quelques secondes, en comparant avec notre base de données angolaise.", s3_title: "Diagnostic", s3_desc: "Consultez le résultat avec le nom du ravageur, le niveau de gravité et les recommandations de traitement spécifiques à l'Angola.", s4_title: "Écoutez et Partagez", s4_desc: "L'assistance vocale lit tout en portugais. Partagez le résultat via WhatsApp avec votre coopérative.",
-        about_label: "Projet Pilote", about_title: "Pourquoi Benguela", about_subtitle: "Benguela a été choisie après une étude comparative des 18 provinces d'Angola.", about_p1: "Avec 80% des terres arables inexploitées, 96 000 familles paysannes, plus de 3 000 coopératives et le Corridor de Lobito comme moteur d'investissement international — c'est là où la technologie peut avoir le plus grand impact avec le moindre risque.", about_p2: "AgroKuia naît comme le système nerveux agricole de l'Angola. La première et unique plateforme qui transforme chaque diagnostic en donnée pour la carte nationale de santé agricole.",
+        about_label: "Projet Pilote", about_title: "Pourquoi Benguela", about_subtitle: "Benguela a été choisie après une étude comparative des 21 provinces d'Angola.", about_p1: "Avec 80% des terres arables inexploitées, 96 000 familles paysannes, plus de 3 000 coopératives et le Corridor de Lobito comme moteur d'investissement international — c'est là où la technologie peut avoir le plus grand impact avec le moindre risque.", about_p2: "AgroKuia naît comme le système nerveux agricole de l'Angola. La première et unique plateforme qui transforme chaque diagnostic en donnée pour la carte nationale de santé agricole.",
         b1: "Hectares de terres arables", b2: "Tonnes produites", b3: "Investissement Corridor de Lobito", b4: "Familles paysannes", b5: "Coopératives actives", b6: "Croissance production",
         feat_label: "Fonctionnalités", feat_title: "Conçu pour l'agriculteur angolais", feat_subtitle: "Chaque fonctionnalité a été conçue en tenant compte des conditions réelles de l'agriculture en Angola.",
-        f1_title: "Détection par IA", f1_desc: "Intelligence artificielle qui identifie les ravageurs et maladies spécifiques à l'Angola en quelques secondes.", f2_title: "Assistance Vocale", f2_desc: "Tous les résultats sont lus à voix haute en portugais — idéal pour les utilisateurs peu alphabétisés.", f3_title: "GPS Automatique", f3_desc: "Localisation automatique pour la cartographie régionale des ravageurs et les alertes par zone.", f4_title: "Partage WhatsApp", f4_desc: "Envoyez le diagnostic directement à votre coopérative ou vulgarisateur via WhatsApp.", f5_title: "Guide Agricole", f5_desc: "Base de données complète avec ravageurs, maladies, sols et cultures des 18 provinces d'Angola.", f6_title: "Fonctionne Hors Ligne", f6_desc: "Sauvegarde les diagnostics sans réseau et synchronise automatiquement quand l'internet revient.",
+        f1_title: "Détection par IA", f1_desc: "Intelligence artificielle qui identifie les ravageurs et maladies spécifiques à l'Angola en quelques secondes.", f2_title: "Assistance Vocale", f2_desc: "Tous les résultats sont lus à voix haute en portugais — idéal pour les utilisateurs peu alphabétisés.", f3_title: "GPS Automatique", f3_desc: "Localisation automatique pour la cartographie régionale des ravageurs et les alertes par zone.", f4_title: "Partage WhatsApp", f4_desc: "Envoyez le diagnostic directement à votre coopérative ou vulgarisateur via WhatsApp.", f5_title: "Guide Agricole", f5_desc: "Base de données complète avec ravageurs, maladies, sols et cultures des 21 provinces d'Angola.", f6_title: "Fonctionne Hors Ligne", f6_desc: "Sauvegarde les diagnostics sans réseau et synchronise automatiquement quand l'internet revient.",
         test_label: "Ce qu'ils disent", test_title: "Voix du terrain angolais", test_subtitle: "Retours des premiers utilisateurs et partenaires qui ont testé AgroKuia.",
         t1_quote: "\"Je n'aurais jamais pensé qu'un téléphone pourrait m'aider à savoir ce qu'a ma plante. Maintenant je prends une photo et je sais immédiatement quoi faire.\"", t1_name: "Maria Antónia", t1_role: "Agricultrice, Benguela",
         t2_quote: "\"La fonctionnalité vocale est fantastique. Beaucoup de nos membres ne savent pas lire, et maintenant ils peuvent utiliser la technologie.\"", t2_name: "José Manuel", t2_role: "Leader de Coopérative, Huambo",
